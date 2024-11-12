@@ -1,5 +1,6 @@
-import { Header } from "../components/header/header";
-import { Sidebar } from "../components/sidebar/sidebar";
+import { Header } from "../components/header/Header";
+import { Sidebar } from "../components/sidebar/Sidebar";
+import { Post } from "../components/post/Post";
 
 import "../styles/reset.scss";
 import "../styles/global.scss";
@@ -14,7 +15,8 @@ export function App() {
         <Sidebar />
 
         <main>
-          <p>test</p>
+          <Post />
+          <Post />
         </main>
       </div>
     </>
