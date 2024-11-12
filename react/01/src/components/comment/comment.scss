@@ -1,0 +1,52 @@
+.comment {
+  display: flex;
+
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  .comment__box {
+    flex: 1;
+  }
+
+  .comment__content {
+    background-color: var(--gray-700);
+
+    border-radius: 8px;
+
+    padding: 1rem;
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .author__and_time {
+        display: flex;
+        flex-direction: column;
+
+        strong {
+          font-size: 0.875rem;
+          font-weight: 700;
+          line-height: 1.6;
+        }
+
+        time {
+          font-size: 0.75rem;
+          line-height: 1.6;
+          color: var(--gray-400);
+        }
+      }
+
+      .btn__delete {
+        color: var(--gray-400);
+        font-size: 0;
+
+        background: transparent;
+
+        border: none;
+
+        cursor: pointer;
+      }
+    }
+  }
+}

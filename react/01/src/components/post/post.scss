@@ -125,6 +125,10 @@
   button:hover {
     background-color: var(--green-300);
   }
+
+  .comment__list {
+    margin-top: 2rem;
+  }
 }
 
 .post + .post {

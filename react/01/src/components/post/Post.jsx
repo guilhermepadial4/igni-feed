@@ -1,4 +1,5 @@
 import { Avatar } from "../avatar/Avatar";
+import { Comment } from "../comment/Comment";
 import "./post.scss";
 
 export function Post() {
@@ -44,6 +45,11 @@ export function Post() {
             <button type="submit">Publicar</button>
           </footer>
         </form>
+
+        <div className="comment__list">
+          <Comment />
+          <Comment />
+        </div>
       </article>
     </>
   );
