@@ -60,6 +60,71 @@
       color: var(--green-300);
     }
   }
+
+  .comment__form {
+    width: 100%;
+
+    border-top: 1px solid var(--gray-600);
+
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  strong {
+    line-height: 1.6;
+    color: var(--gray-100);
+  }
+
+  textarea {
+    width: 100%;
+    height: 6rem;
+
+    line-height: 1.4;
+    color: var(--gray-100);
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: var(--gray-900);
+
+    resize: none;
+
+    margin-top: 1rem;
+
+    padding: 1rem;
+  }
+
+  footer {
+    visibility: hidden;
+    max-height: 0;
+  }
+
+  .comment__form:focus-within footer {
+    visibility: visible;
+    max-height: none;
+  }
+
+  button {
+    font-weight: 700;
+    color: var(--white);
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: var(--green-500);
+
+    margin-top: 1rem;
+
+    padding: 1rem 1.5rem;
+
+    cursor: pointer;
+
+    transition: background-color 0.1s;
+  }
+
+  button:hover {
+    background-color: var(--green-300);
+  }
 }
 
 .post + .post {
