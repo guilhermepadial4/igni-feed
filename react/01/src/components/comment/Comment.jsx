@@ -6,7 +6,7 @@ import "./comment.scss";
 export function Comment() {
   return (
     <div className="comment">
-      <Avatar src="https://github.com/guilhermepadial4.png" />
+      <Avatar hasBorder={false} src="https://github.com/guilhermepadial4.png" />
 
       <div className="comment__box">
         <div className="comment__content">
@@ -32,7 +32,6 @@ export function Comment() {
             Aplaudir <span>20</span>
           </button>
         </div>
-        
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import "./avatar.scss";
 
-export function Avatar(props){
+export function Avatar({ hasBorder = true, src }){
     return(
-        <img className="avatar" src={props.src} />
+        <img className={hasBorder ? "avatarWithBorder" : "avatar"} src={src} />
     )
 }
