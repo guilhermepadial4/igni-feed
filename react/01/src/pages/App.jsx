@@ -10,20 +10,42 @@ const posts = [
   {
     id: 1,
     author: {
-      avatarUrl: "https://github.com/guilhermepadial4.png",
-      name: "Guilherme Padial",
-      role: "Web Developer",
+      avatarUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/49/Lukeportrait.jpg/revision/latest?cb=20151221055502&path-prefix=ro",
+      name: "Luke Skywalker",
+      role: "Backend Developer",
     },
     content: [
-      { type: "paragraph", content: "Fala galeraa 👋" },
+      { type: "paragraph", content: "Fala galera 👋" },
       {
         type: "paragraph",
         content:
-          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+          "Finalizei um novo serviço backend! 🚀 Com foco em segurança e performance, acredito que ele pode oferecer a estabilidade que toda aplicação precisa. Que a força dos servidores esteja com todos nós!",
       },
-      { type: "link", content: "jane.design/doctorcare" },
+      { type: "link", content: "skywalker.dev/jedi-api" },
+      { type: "link", content: "#backend" },
+      { type: "link", content: "#developerLife" },
     ],
     publishedAt: new Date("2024-11-14 8:00:00"),
+  },
+
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://cdn.mos.cms.futurecdn.net/ssxo629hvs9vPA6Vef5vVi.png",
+      name: "Minch Yoda",
+      role: "FullStack Developer",
+    },
+    content: [
+      { type: "paragraph", content: "Saudações pessoal!" },
+      {
+        type: "paragraph",
+        content:
+          "Nova API finalizei, para muitos projetos útil ela será. Conectar sistemas, mais fácil agora é. Ansioso estou, para ver o que construir vocês irão. 🤖🌌",
+      },
+      { type: "link", content: "yoda.developer/forceapi" },
+      { type: "link", content: "#ForceAPI" },
+    ],
+    publishedAt: new Date("2024-11-12 15:00:00"),
   },
 ];
 
@@ -37,14 +59,7 @@ export function App() {
 
         <main>
           {posts.map((post) => {
-            return (
-              <Post 
-                key={post.id}
-                author={post.author}
-                content={post.content}
-                publishedAt={post.publishedAt}
-              />
-            )
+            return <Post key={post.id} author={post.author} content={post.content} publishedAt={post.publishedAt} />;
           })}
         </main>
       </div>
