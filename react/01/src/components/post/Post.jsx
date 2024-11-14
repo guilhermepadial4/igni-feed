@@ -4,8 +4,13 @@ import ptBR from "date-fns/locale/pt-BR";
 import { Avatar } from "../avatar/Avatar";
 import { Comment } from "../comment/Comment";
 import "./post.scss";
+import { useState } from "react";
 
 export function Post({ author, publishedAt, content }) {
+  const [comments, setComments] = useState(["Post bacana"]);
+
+  const [newCommentText, setNewCommentText] = useState("");
+
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
   });
@@ -14,6 +19,17 @@ export function Post({ author, publishedAt, content }) {
     locale: ptBR,
     addSuffix: true,
   });
+
+  const handleCreateNewComment = (evt) => {
+    evt.preventDefault();
+
+    setComments([...comments, newCommentText]);
+    setNewCommentText("");
+  };
+
+  const handleNewCommentChange = (evt) => {
+    setNewCommentText(evt.target.value);
+  };
 
   return (
     <article className="post">
@@ -37,15 +53,19 @@ export function Post({ author, publishedAt, content }) {
           if (line.type === "paragraph") {
             return <p>{line.content}</p>;
           } else if (line.type === "link") {
-            return <p><a>{line.content}</a></p>;
+            return (
+              <p>
+                <a>{line.content}</a>
+              </p>
+            );
           }
         })}
       </div>
 
-      <form className="comment__form">
+      <form onSubmit={handleCreateNewComment} className="comment__form">
         <strong>Deixe seu feedback</strong>
 
-        <textarea placeholder="Deixe um comentário" />
+        <textarea name="comment" onChange={handleNewCommentChange} value={newCommentText} placeholder="Deixe um comentário" />
 
         <footer>
           <button type="submit">Publicar</button>
@@ -53,8 +73,9 @@ export function Post({ author, publishedAt, content }) {
       </form>
 
       <div className="comment__list">
-        <Comment />
-        <Comment />
+        {comments.map((comment) => {
+          return <Comment content={comment} />;
+        })}
       </div>
     </article>
   );
