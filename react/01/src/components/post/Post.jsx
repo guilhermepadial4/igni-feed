@@ -28,7 +28,12 @@ export function Post({ author, publishedAt, content }) {
   };
 
   const handleNewCommentChange = (evt) => {
+    evt.target.setCustomValidity("");
     setNewCommentText(evt.target.value);
+  };
+
+  const handleNewCommentInvalid = (evt) => {
+    evt.target.setCustomValidity("Esse campo é obrigatório!");
   };
 
   const deleteComment = (commentToDelete) => {
@@ -38,6 +43,8 @@ export function Post({ author, publishedAt, content }) {
 
     setComments(commentsWithoutDeletedOne);
   };
+
+  const isNewCommentEmpyt = newCommentText.length === 0;
 
   return (
     <article className="post">
@@ -73,10 +80,19 @@ export function Post({ author, publishedAt, content }) {
       <form onSubmit={handleCreateNewComment} className="comment__form">
         <strong>Deixe seu feedback</strong>
 
-        <textarea name="comment" onChange={handleNewCommentChange} value={newCommentText} placeholder="Deixe um comentário" />
+        <textarea
+          name="comment"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
+          placeholder="Deixe um comentário"
+          required
+        />
 
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={isNewCommentEmpyt}>
+            Publicar
+          </button>
         </footer>
       </form>
 
