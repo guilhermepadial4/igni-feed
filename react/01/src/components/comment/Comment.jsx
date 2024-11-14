@@ -3,7 +3,11 @@ import { Avatar } from "../avatar/Avatar";
 
 import "./comment.scss";
 
-export function Comment({ content }) {
+export function Comment({ content, onDeleteComment }) {
+  const handleDeleteComment = () => {
+    onDeleteComment(content);
+  };
+
   return (
     <div className="comment">
       <Avatar hasBorder={false} src="https://github.com/guilhermepadial4.png" />
@@ -18,7 +22,7 @@ export function Comment({ content }) {
               </time>
             </div>
 
-            <button title="Deletar comentário">
+            <button onClick={handleDeleteComment} title="Deletar comentário">
               <Trash size={20} />
             </button>
           </header>
