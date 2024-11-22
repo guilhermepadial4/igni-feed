@@ -18,8 +18,6 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme["gray-300"]};
 
     -webkit-font-smoothing: antialiased;
-    
-    overflow: hidden;
   }
 
   body, input-security, textarea, button {
