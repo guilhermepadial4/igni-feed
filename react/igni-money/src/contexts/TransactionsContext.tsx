@@ -24,21 +24,32 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<Transactions[]>([]);
 
   async function fetchTransactions(query?: string) {
-    const url = new URL("http://localhost:3000/transactions");
-
-    if (query) {
-      url.searchParams.append("q", query);
-    }
+    const url = "http://localhost:3000/transactions";
 
     const response = await fetch(url);
-    const data = await response.json();
+    const data: Transactions[] = await response.json();
 
-    setTransactions(data);
+    const filteredData = query
+      ? data.filter((transaction) => {
+          const queryLower = query.toLowerCase();
+          const queryNumber = parseFloat(query);
+
+          return (
+            transaction.description.toLowerCase().includes(queryLower) ||
+            transaction.type.toLowerCase().includes(queryLower) ||
+            transaction.category.toLowerCase().includes(queryLower) ||
+            (transaction.price && transaction.price.toString().includes(query)) ||
+            (!isNaN(queryNumber) && transaction.price === queryNumber)
+          );
+        })
+      : data;
+
+    setTransactions(filteredData);
   }
 
   useEffect(() => {
     fetchTransactions();
-  });
+  }, []);
 
   return <TransactionsContext.Provider value={{ transactions, fetchTransactions }}>{children}</TransactionsContext.Provider>;
 }
