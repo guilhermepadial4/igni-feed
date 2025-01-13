@@ -54,7 +54,12 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         })
       : data;
 
-    setTransactions(filteredData);
+    // Ordena as transações por data, das mais recentes para as mais antigas
+    const sortedData = filteredData.sort((a, b) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
+
+    setTransactions(sortedData);
   }, []);
 
   const createTransactions = useCallback(async (data: CreateTransactionInput) => {
@@ -76,6 +81,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   }, [fetchTransactions]);
 
   return (
-    <TransactionsContext.Provider value={{ transactions, fetchTransactions, createTransactions }}>{children}</TransactionsContext.Provider>
+    <TransactionsContext.Provider value={{ transactions, fetchTransactions, createTransactions }}>
+      {children}
+    </TransactionsContext.Provider>
   );
 }
