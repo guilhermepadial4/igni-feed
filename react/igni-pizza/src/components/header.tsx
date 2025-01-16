@@ -2,7 +2,9 @@ import { Home, Pizza, UtensilsCrossed } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
 
+import { AccountMenu } from "./account-menu";
 import NavLink from "./nav-link";
+import { ThemeToggle } from "./theme/theme-toggle";
 
 export function Header() {
   return (
@@ -23,6 +25,11 @@ export function Header() {
             Pedidios
           </NavLink>
         </nav>
+
+        <div className="ml-auto flex items-center gap-2">
+          <ThemeToggle />
+          <AccountMenu />
+        </div>
       </div>
     </div>
   );
